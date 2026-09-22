@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-const schema = z.object({
+// Scheme that defines the ENV file variables
+const configSchema = z.object({
   NODE_ENV: z
     .enum(["development", "test", "production"])
     .default("development"),
@@ -13,6 +14,6 @@ const schema = z.object({
   AWS_ENDPOINT_URL: z.url().optional(),
 });
 
-export type Config = z.infer<typeof schema>;
+export type Config = z.infer<typeof configSchema>;
 export const loadConfig = (env: NodeJS.ProcessEnv = process.env): Config =>
-  schema.parse(env);
+  configSchema.parse(env);
