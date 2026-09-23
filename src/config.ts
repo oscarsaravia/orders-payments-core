@@ -12,6 +12,7 @@ const configSchema = z.object({
   DATABASE_URL: z.url(),
   AWS_REGION: z.string().default("us-east-1"),
   AWS_ENDPOINT_URL: z.url().optional(),
+  STRIPE_SECRET_KEY: z.string().startsWith('sk_test_')
 });
 
 export type Config = z.infer<typeof configSchema>;

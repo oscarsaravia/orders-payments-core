@@ -23,6 +23,7 @@ jobs:
           --health-retries 10
     env:
       DATABASE_URL: postgresql://app:app@localhost:5432/orders
+      STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v4
